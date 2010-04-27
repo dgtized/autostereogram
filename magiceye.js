@@ -12,6 +12,13 @@ function run() {
     depthmap = scale_canvas(depthmap, width / depthmap.width, height / depthmap.height);
 
     autostereogram(canvas, pattern, depthmap, invert.checked);
+
+    canvas.onclick = function() {
+	canvas.getContext('2d').drawImage(depthmap, 0, 0);
+	canvas.onclick = function() {
+	    run();
+	}
+    }
 }
 
 function autostereogram(canvas, pattern, depthmap, invert) {
