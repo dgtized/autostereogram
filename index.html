@@ -1,0 +1,19 @@
+<html>
+ <head>
+  <script type="application/javascript" src="magiceye.js"></script>
+  <link rel="stylesheet" type="text/css" href="web.css" />
+ </head>
+ <body onload="run()">
+   <canvas id="magiceye"o></canvas>
+   <p>
+     Width <input id="width" type="text" value="1024"></input>
+     Height <input id="height" type="text" value="768"></input>
+     Invert Depthmap <input id="invert" type="checkbox"></input>
+     <input type="button" onclick="run();" value="Make Autostereogram"></input>
+   </p>
+   <p>
+     <img id="depthmap" src="depthmaps/diamond.gif"/>
+     <img id="pattern" src="cracked_ground.jpg"/>
+   </p>
+ </body>
+</html>
