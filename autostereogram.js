@@ -1,5 +1,4 @@
 function Autostereogram() {
-    this.invert = false;
     this.setXdpi = function(xdpi) {
 	this.eyeSep = xdpi * 2.5;
 	this.obsDist = xdpi * 12;
@@ -10,7 +9,10 @@ function Autostereogram() {
 	this.mindepth=(this.sepfactor*this.maxdepth*this.obsDist)/
 	    ((1-this.sepfactor)*this.maxdepth+this.obsDist);
     }
+    this.invert = false;
+    this.setXdpi(200);
 
+    // member functions
     this.getSeparation = function (idx, depthData) {
 	var z = (depthData.data[idx + 0] + depthData.data[idx + 1] +
 		 depthData.data[idx + 2]) / 3;
@@ -92,7 +94,6 @@ function Autostereogram() {
 	}
 	ctx.putImageData(canvasData, 0, 0);
     }
-    this.setXdpi(200);
 }
 
 function run() {
