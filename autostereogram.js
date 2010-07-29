@@ -96,9 +96,24 @@ function Autostereogram() {
     }
 }
 
+function selected_image(group) {
+    var group_form = document.getElementById(group);
+
+    var selector = group_form.selector;
+    var index = 0;
+    for(var i = 0; i < selector.length; i++) {
+	if(selector[i].checked) {
+	    index = i;
+	    break;
+	}
+    }
+
+    return group_form.getElementsByTagName("img")[index];
+}
+
 function run() {
-    var pattern = load_canvas_from_image('pattern');
-    var depthmap = load_canvas_from_image('depthmap');
+    var pattern = create_canvas_from_image(selected_image('pattern_group'));
+    var depthmap = create_canvas_from_image(selected_image('depthmap_group'));
     var canvas = document.getElementById('magiceye');
 
     var invert = document.getElementById("invert");
@@ -119,6 +134,15 @@ function run() {
 	    run();
 	}
     }
+
+    document.getElementById('depthmap_files').
+	addEventListener('change',
+			 function(evt) { file_selector(evt, "depthmap_group") },
+			 false);
+    document.getElementById('pattern_files').
+	addEventListener('change',
+			 function(evt) { file_selector(evt, "pattern_group") },
+			 false);
 }
 
 function index(x,y,width) {
@@ -132,13 +156,19 @@ function copy_idx(src_idx, src, dst_idx, dst) {
     dst.data[dst_idx + 3] = src.data[src_idx + 3];
 }
 
-function load_canvas_from_image(id) {
-    var img = document.getElementById(id);
+function create_canvas_from_image(img) {
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
 
+    // real_img is a hack to get back the original image size, and not
+    // the computed thumbnail size
+    var real_img = new Image();
+    real_img.src = (img.getAttribute ? img.getAttribute("src") : false) || img.src;
+    img = real_img;
+
     canvas.width = img.width;
     canvas.height = img.height;
+
     context.drawImage(img, 0, 0, img.width, img.height);
 
     return canvas;
@@ -152,4 +182,36 @@ function scale_canvas(canvas, xscale, yscale) {
     scaled.height = canvas.height * yscale;
     scaled.getContext('2d').drawImage(canvas, 0, 0, scaled.width, scaled.height);
     return scaled;
+}
+
+// modified from http://www.html5rocks.com/tutorials/file/dndfiles/#toc-selecting-files-input
+function file_selector(evt, group) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+	// Only process image files.
+	if (!f.type.match('image.*')) {
+	    continue;
+	}
+
+	var reader = new FileReader();
+
+	// Closure to capture the file information.
+	reader.onload = (function(theFile) {
+	    return function(e) {
+		// Render thumbnail.
+		var span = document.createElement('span');
+		span.innerHTML = ['<input type="radio" name="selector"/>',
+				  '<img class="thumb" src="',
+				  e.target.result, '" title="', theFile.name,
+				  '"/>'].join('');
+		document.getElementById(group).appendChild(span, null);
+	    };
+	})(f);
+
+	// Read in the image file as a data URL.
+	reader.readAsDataURL(f);
+    }
 }

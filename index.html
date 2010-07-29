@@ -1,19 +1,36 @@
 <html>
- <head>
-  <script type="application/javascript" src="autostereogram.js"></script>
-  <link rel="stylesheet" type="text/css" href="web.css" />
- </head>
- <body onload="run()">
-   <canvas id="magiceye"o></canvas>
-   <p>
-     Width <input id="width" type="text" value="1024"/>
-     Height <input id="height" type="text" value="768"/>
-     Invert Depthmap <input id="invert" type="checkbox"/>
-     <input type="button" onclick="run();" value="Make Autostereogram"/>
-   </p>
-   <div style="display: none;">
-     <img id="depthmap" src="depthmaps/duck.jpg"/>
-     <img id="pattern" src="cracked_ground.jpg"/>
-   </div>
- </body>
+  <head>
+    <script type="application/javascript" src="autostereogram.js"></script>
+    <link rel="stylesheet" type="text/css" href="web.css" />
+  </head>
+  <body onload="run()">
+    <canvas id="magiceye"></canvas>
+    <p>
+      <label for="width">Width</label>
+      <input id="width" type="text" value="1024"/>
+      <label for="height">Height</label>
+      <input id="height" type="text" value="768"/>
+      <label for="invert">Invert Depthmap</label> 
+      <input id="invert" type="checkbox"/>
+      <input type="button" onclick="run();" value="Make Autostereogram"/>
+    </p>
+    <div style="float: left">
+      <label for="depthmap_files">Add Custom Depthmap</label>
+      <input type="file" id="depthmap_files" name="depthmap_files[]" multiple />
+      <br/>
+      <form id="depthmap_group">
+	<input type="radio" name="selector" checked/>
+	<img class="thumb" src="depthmaps/duck.jpg" title="duck"/>
+      </form>
+    </div>
+    <div>
+      <label for="pattern_files">Add Custom Pattern</label>
+      <input type="file" id="pattern_files" name="pattern_files[]" multiple />
+      <br/>
+      <form id="pattern_group">
+	<input type="radio" name="selector" checked/>
+	<img class="thumb" src="cracked_ground.jpg" title="cracked_ground"/>
+      </form>
+    </div>
+  </body>
 </html>
