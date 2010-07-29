@@ -14,13 +14,21 @@
       <input id="invert" type="checkbox"/>
       <input type="button" onclick="run();" value="Make Autostereogram"/>
     </p>
-    <div style="float: left">
+    <div style="float: left; width: 50%">
       <label for="depthmap_files">Add Custom Depthmap</label>
       <input type="file" id="depthmap_files" name="depthmap_files[]" multiple />
       <br/>
       <form id="depthmap_group">
 	<input type="radio" name="selector" checked/>
 	<img class="thumb" src="depthmaps/duck.jpg" title="duck"/>
+	<input type="radio" name="selector"/>
+	<img class="thumb" src="depthmaps/canyon.jpg" title="canyon.jpg"/>
+	<input type="radio" name="selector"/>
+	<img class="thumb" src="depthmaps/diamond.gif" title="diamond.gif"/>
+	<input type="radio" name="selector"/>
+	<img class="thumb" src="depthmaps/squiggily.jpg" title="squiggily.jpg"/>
+	<input type="radio" name="selector"/>
+	<img class="thumb" src="depthmaps/fishes.jpg" title="fishes.jpg"/>
       </form>
     </div>
     <div>
