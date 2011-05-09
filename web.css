@@ -1,7 +1,18 @@
-canvas { border: 1px solid gray; }
+.layout {
+    width: 1024px;
+    margin: auto auto;
+}
+
+canvas {
+    border: 1px solid gray;
+}
 
 .thumb {
   height: 75px;
   border: 1px solid #000;
   margin: 10px 5px 0 0;
+}
+
+.center {
+    text-align: center;
 }
