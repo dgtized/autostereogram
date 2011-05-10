@@ -20,7 +20,7 @@ function Autostereogram() {
         var zdepth = this.maxdepth - z * (this.maxdepth - this.mindepth)/256;
 
         return Math.round((this.eyeSep * zdepth) / (zdepth + this.obsDist));
-    }
+    };
 
     this.calculateLinksForRow = function (width, y, depthData, lookL, lookR) {
         for(var x = 0; x < width; x++) {
@@ -56,7 +56,7 @@ function Autostereogram() {
                 }
             }
         }
-    }
+    };
 
     this.generate = function(canvas, pattern, depthmap) {
         var ctx = canvas.getContext('2d');
@@ -92,7 +92,7 @@ function Autostereogram() {
             }
         }
         ctx.putImageData(canvasData, 0, 0);
-    }
+    };
 }
 
 function selected_image(group) {
@@ -131,16 +131,16 @@ function run() {
         canvas.getContext('2d').drawImage(depthmap, 0, 0);
         canvas.onclick = function() {
             run();
-        }
-    }
+        };
+    };
 
     document.getElementById('depthmap_files').
         addEventListener('change',
-                         function(evt) { file_selector(evt, "depthmap_group") },
+                         function(evt) { file_selector(evt, "depthmap_group"); },
                          false);
     document.getElementById('pattern_files').
         addEventListener('change',
-                         function(evt) { file_selector(evt, "pattern_group") },
+                         function(evt) { file_selector(evt, "pattern_group"); },
                          false);
 }
 
