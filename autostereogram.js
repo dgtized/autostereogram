@@ -1,17 +1,16 @@
 function Autostereogram() {
     this.invert = false;
-    this.setXdpi(200);
+    this.setXdpi(200, 0.55);
 }
 
-Autostereogram.prototype.setXdpi = function(xdpi) {
+Autostereogram.prototype.setXdpi = function(xdpi, sepfactor) {
     this.eyeSep = xdpi * 2.5;
     this.obsDist = xdpi * 12;
     this.maxdepth = xdpi * 12;
     this.maxsep = Math.floor((this.eyeSep * this.maxdepth)/
                              (this.maxdepth + this.obsDist));
-    this.sepfactor = 0.55;
-    this.mindepth=(this.sepfactor*this.maxdepth*this.obsDist)/
-        ((1-this.sepfactor)*this.maxdepth+this.obsDist);
+    this.mindepth=(sepfactor*this.maxdepth*this.obsDist)/
+        ((1-sepfactor)*this.maxdepth+this.obsDist);
 };
 
 Autostereogram.prototype.getSeparation = function (idx, depthData) {
