@@ -76,7 +76,7 @@ function Autostereogram() {
             for(var x = 0; x < width; x++) {
                 if(lookL[x] == x) {
                     if(lastlinked == x-1) {
-                        color[x] = color[x-1]
+                        color[x] = color[x-1];
                     } else {
                         color[x] = x % this.maxsep;
                     }
