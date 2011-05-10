@@ -22,6 +22,11 @@ cross-browser testing.  I know it at least renders the autostereogram in:
 ### Known Issues
 
  * Sometimes when uploading a pattern or depthmap it is added more then once.
+ * Apparently the Canvas and File API's have security problems if they aren't being hosted off of a webserver.  `static.ru` is a Rack file for using thin to run a temporary server on localhost:3000.  Just install thin, and execute:
+
+    $ thin -R static.ru start
+
+Browse to localhost:3000 and everything should be happy.
 
 ### Other Stuff
 
