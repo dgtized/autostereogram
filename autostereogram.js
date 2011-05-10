@@ -35,17 +35,14 @@ function Autostereogram() {
             var visible = true;
             if((left >= 0) && (right < width)) {
                 if (lookL[right]!=right) { // right pt already linked
-                    if (lookL[right]<left) // deeper than current
-                    {
+                    if (lookL[right]<left) { // deeper than current
                         lookR[lookL[right]]=lookL[right]; // break old links
                         lookL[right]=right;
                     } else { visible = false; }
                 }
 
-                if (lookR[left]!=left) // left pt already linked
-                {
-                    if (lookR[left]>right) // deeper than current
-                    {
+                if (lookR[left]!=left) { // left pt already linked
+                    if (lookR[left]>right) { // deeper than current
                         lookL[lookR[left]]=lookR[left]; // break old links
                         lookR[left]=left;
                     } else { visible = false; }
