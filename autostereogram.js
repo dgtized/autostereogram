@@ -22,7 +22,11 @@ Autostereogram.prototype.getSeparation = function (idx, depthData) {
     return Math.round((this.eyeSep * zdepth) / (zdepth + this.obsDist));
 };
 
-Autostereogram.prototype.calculateLinksForRow = function (width, y, depthData, lookL, lookR) {
+Autostereogram.prototype.calculateLinksForRow = function (width, y, depthData) {
+    // Initialize linked pixels for row
+    var lookL = new Array(width);
+    var lookR = new Array(width);
+
     for(var x = 0; x < width; x++) {
         lookL[x] = x;
         lookR[x] = x;
@@ -53,6 +57,8 @@ Autostereogram.prototype.calculateLinksForRow = function (width, y, depthData, l
             }
         }
     }
+
+    return { left: lookL, right: lookR };
 };
 
 Autostereogram.prototype.generate = function(canvas, pattern, depthmap) {
@@ -66,10 +72,9 @@ Autostereogram.prototype.generate = function(canvas, pattern, depthmap) {
 
     var width = depthmap.width;
     for(var y = 0; y < depthmap.height; y++) {
-        // Initialize linked pixels for row
-        var lookL = new Array(width);
-        var lookR = new Array(width);
-        this.calculateLinksForRow(width, y, depthData, lookL, lookR);
+        var links = this.calculateLinksForRow(width, y, depthData);
+        var lookL = links.left;
+        var lookR = links.right;
 
         var lastlinked = 0;
         var color = new Array(width);
