@@ -31,4 +31,4 @@ Browse to localhost:3000 and everything should be happy.
 ## Other Stuff
 
 Author: Charles L.G. Comstock (dgtized@gmail.com)
-License: Copyright 2010-2011 by Charles L.G. Comstock, released under MIT License
+License: Copyright 2010-2013 by Charles L.G. Comstock, released under MIT License
