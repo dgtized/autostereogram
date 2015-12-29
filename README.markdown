@@ -28,7 +28,7 @@ cross-browser testing.  I know it at least renders the autostereogram in:
 
 Browse to localhost:3000 and everything should be happy.
 
-## Other Stuff
+## License
 
-Author: Charles L.G. Comstock (dgtized@gmail.com)
-License: Copyright 2010-2016 by Charles L.G. Comstock, released under MIT License
+Copyright 2010-2016 by Charles L.G. Comstock (dgtized@gmail.com), released under MIT License
+
