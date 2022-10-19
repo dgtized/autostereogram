@@ -30,5 +30,5 @@ Browse to localhost:3000 and everything should be happy.
 
 ## License
 
-Copyright 2010-2020 by Charles L.G. Comstock (dgtized@gmail.com), released under MIT License
+Copyright 2010-2022 by Charles L.G. Comstock (dgtized@gmail.com), released under MIT License
 
