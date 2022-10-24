@@ -2,7 +2,7 @@
 
 I wrote this last summer as a quick hack to play around with javascript, specifically the new canvas and in browser uploading features.  Basically it generates a "Magic Eye" image out of a black and white depthmap and a pattern to replicate.
 
-Without further ado: http://dgtized.github.com/autostereogram/
+Without further ado: http://dgtized.github.io/autostereogram/
 
 Using the radio buttons at the base of the page you can select which depthmap you want to render, and with which pattern to embed the stereogram in the tiling.  The neat thing about the file upload buttons is they aren't actually uploading to the server, just loading the image you select into the page.  This is why reloading the page ditches any patterns or depthmaps you "uploaded".  Note that some of the depthmaps are encoding max depth as 0 instead of 255, so if it looks like the image is inside out, just use the invert depthmap checkbox.  Clicking on the canvas will display the depthmap.
 
